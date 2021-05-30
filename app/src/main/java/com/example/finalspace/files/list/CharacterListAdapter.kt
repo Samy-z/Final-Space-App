@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finalspace.R
 
 class CharacterListAdapter(private var dataSet: List<Character>, var listener: ((Int)-> Unit)? =null) :
-    RecyclerView.Adapter<CharacterListAdapter.ViewHolder>() {
+        RecyclerView.Adapter<CharacterListAdapter.ViewHolder>() {
 
     /**
      * Provide a reference to the type of views that you are using
@@ -31,7 +31,7 @@ class CharacterListAdapter(private var dataSet: List<Character>, var listener: (
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.character_item, viewGroup, false)
+                .inflate(R.layout.character_item, viewGroup, false)
 
         return ViewHolder(view)
     }
