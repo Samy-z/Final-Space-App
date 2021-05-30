@@ -18,6 +18,7 @@ et plus précisément au premier appel de la fonction qui télécharge les photo
         
         Je ne sais pas si c'est car j'ai débuggué sur mon propre téléphone et qu'il y a des mesures de sécurités de 1ère connexion,
         ou si ce résultat aura lieux sur tous les appareils.
+        Mais en tout cas après le 1er crash, l'application fonctionne sans problèmes.
         
 L'application est codée pour s'utiliser en mode portrait, bien que les contraintes screenOrentation aient été mises dans les fichiers XML, 
 l'application est tout de même sujette à se tourner en mode paysage quand on oriente le téléphone pour ça.
