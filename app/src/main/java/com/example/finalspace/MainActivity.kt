@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Application mobile programmée par \nSamy ZERARKA", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "Application Android programmée par \nSamy ZERARKA", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
     }
