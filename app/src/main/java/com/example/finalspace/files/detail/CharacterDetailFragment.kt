@@ -11,25 +11,22 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.finalspace.R
 import com.example.finalspace.files.Singletons
-import com.example.finalspace.files.api.FSApi
 import com.example.finalspace.files.list.Character
-import com.example.finalspace.files.list.CharacterListAdapter
-import com.google.gson.GsonBuilder
-import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.io.InputStream
 
 class CharacterDetailFragment : Fragment() {
 
     lateinit var textViewName: TextView
+    lateinit var textViewSpec: TextView
+    lateinit var textViewHair: TextView
+    lateinit var textViewGend: TextView
+    lateinit var textViewOrig: TextView
+    lateinit var textViewStat: TextView
     lateinit var imgView: ImageView
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +39,11 @@ class CharacterDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         textViewName = view.findViewById(R.id.textview_detail_name)
+        textViewSpec = view.findViewById(R.id.textview_detail_species)
+        textViewHair = view.findViewById(R.id.textview_detail_hair)
+        textViewGend = view.findViewById(R.id.textview_detail_gender)
+        textViewOrig = view.findViewById(R.id.textview_detail_origin)
+        textViewStat = view.findViewById(R.id.textview_detail_status)
         imgView = view.findViewById(R.id.imgview_detail_img_url)
         callApi()
 
@@ -50,27 +52,27 @@ class CharacterDetailFragment : Fragment() {
         }
     }
 
-        lateinit var bmImage: ImageView
+    lateinit var bmImage: ImageView
 
-        public fun DownloadImageTask (bmImage: ImageView, url: String) : Bitmap {
-            this.bmImage = bmImage
-            var imgDL : Bitmap = doInBackground(url)
-            imgDL.prepareToDraw()
-            return imgDL
-        }
+    public fun DownloadImageTask (bmImage: ImageView, url: String) : Bitmap {
+        this.bmImage = bmImage
+        var imgDL : Bitmap = doInBackground(url)
+        imgDL.prepareToDraw()
+        return imgDL
+    }
 
 
-        fun doInBackground(url: String) : Bitmap {
-            lateinit var mIcon11: Bitmap
-            val input: InputStream = java.net.URL(url).openStream()
-            mIcon11 = BitmapFactory.decodeStream(input)
-            mIcon11.prepareToDraw()
-            return mIcon11;
-        }
+    fun doInBackground(url: String) : Bitmap {
+        lateinit var mIcon11: Bitmap
+        val input: InputStream = java.net.URL(url).openStream()
+        mIcon11 = BitmapFactory.decodeStream(input)
+        mIcon11.prepareToDraw()
+        return mIcon11;
+    }
 
-        private fun onPostExecute(result: Bitmap) {
-            bmImage.setImageBitmap(result)
-        }
+    private fun onPostExecute(result: Bitmap) {
+        bmImage.setImageBitmap(result)
+    }
 
 
 
@@ -82,12 +84,18 @@ class CharacterDetailFragment : Fragment() {
             override fun onResponse(call: Call<Character>, response: Response<Character>) {
                 if(response.isSuccessful && response.body()!=null ){
                     val perso: Character = response.body()!!
-                    textViewName.text = perso.name.toString()
+                    textViewName.text = perso.name.toUpperCase()
+                    textViewSpec.text = ("SPECIES: "+perso.species+"\n").toUpperCase()
+                    textViewHair.text = ("HAIR: "+perso.hair+"\n").toUpperCase()
+                    textViewGend.text = ("GENDER: "+perso.gender+"\n").toUpperCase()
+                    textViewOrig.text = ("ORIGIN: "+perso.origin).toUpperCase()
+                    textViewStat.text = ("CURRENT STATUS: "+perso.status).toUpperCase()
                     val characPicture : Bitmap = DownloadImageTask(imgView,perso.img_url)
                     if (characPicture!=null) {
                         characPicture.prepareToDraw()
                         onPostExecute(characPicture)
                     }
+
                 }
             }
 
