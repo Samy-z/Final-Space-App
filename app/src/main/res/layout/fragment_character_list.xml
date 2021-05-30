@@ -32,6 +32,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/character_recyclerview"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="595dp"
             android:backgroundTint="@color/purple_700"
