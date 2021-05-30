@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:screenOrientation="portrait"
+        android:background="@drawable/listwallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".files.list.CharacterListFragment">
+
+        <ImageView
+            android:id="@+id/imgView"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:src="@drawable/finalspacebar"
+            android:background="@color/black"
+            app:layout_anchor="@+id/appBarLayout2"
+            app:layout_anchorGravity="center" ></ImageView>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/black"
+            android:textStyle="bold"
+            android:fontFamily="@font/montana"
+            android:text="BIENVENUE DANS L'APPLI FINAL SPACE\nVOICI LA LISTE DE TOUS LES PERSONNAGES DE LA SERIE"
+            android:textAlignment="center"
+
+            app:layout_constraintTop_toBottomOf="@id/imgView"
+            app:layout_anchor="@+id/appBarLayout2"
+            app:layout_anchorGravity="center" ></TextView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/character_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="595dp"
+            android:backgroundTint="@color/purple_700"
+            android:fontWeight="400"
+            android:fontFamily="@font/montana"
+            android:text="@string/next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView2"
+            />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
