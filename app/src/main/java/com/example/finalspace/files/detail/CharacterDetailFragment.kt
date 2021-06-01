@@ -25,12 +25,11 @@ class CharacterDetailFragment : Fragment() {
     lateinit var textViewGend: TextView
     lateinit var textViewOrig: TextView
     lateinit var textViewStat: TextView
-
     lateinit var textViewAbilities: TextView
-    lateinit var textViewAlias2: TextView
-    //lateinit var textViewAlias3: TextView
-
+    lateinit var textViewAlias: TextView
+    
     lateinit var imgView: ImageView
+    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,8 +48,8 @@ class CharacterDetailFragment : Fragment() {
         textViewStat = view.findViewById(R.id.textview_detail_status)
         textViewAbilities= view.findViewById(R.id.textview_detail_abilities)
 
-        textViewAlias2= view.findViewById(R.id.textview_detail_alias)
-        //textViewAlias3= view.findViewById(R.id.textview_detail_alias3)
+        textViewAlias= view.findViewById(R.id.textview_detail_alias)
+        
         imgView = view.findViewById(R.id.imgview_detail_img_url)
         callApi()
 
@@ -58,6 +57,8 @@ class CharacterDetailFragment : Fragment() {
             findNavController().navigate(R.id.navigate_to_character_list_fragment)
         }
     }
+    
+    
 /*      Code de récupération et affichage des images (celui qui était buggé)
     lateinit var bmImage: ImageView
     public fun DownloadImageTask (bmImage: ImageView, url: String) : Bitmap {
@@ -68,16 +69,14 @@ class CharacterDetailFragment : Fragment() {
     }
     fun doInBackground(url: String) : Bitmap {
         lateinit var mIcon11: Bitmap
-        val input: InputStream = java.net.URL(url).openStream()
+        val input: InputStream = java.net.URL(url).openStream()                 crash si la connection n'est pas assez rapide
         mIcon11 = BitmapFactory.decodeStream(input)
         mIcon11.prepareToDraw()
         return mIcon11;
     }
     private fun onPostExecute(result: Bitmap) {
         bmImage.setImageBitmap(result)
-    }*/
-
-
+    }*/ 
 
 
     private fun callApi(){
@@ -123,29 +122,29 @@ class CharacterDetailFragment : Fragment() {
                     if(perso.alias.isNotEmpty()) {
                         if (perso.alias.size == 1) {
                             alias += ("AKA: " + perso.alias[0]).toUpperCase()
-                            textViewAlias2.text = alias
+                            textViewAlias.text = alias
                         }
                         if (perso.alias.size == 2) {
                             alias += ("AKA: " + perso.alias[0] + " / " + perso.alias[1]).toUpperCase()
-                            textViewAlias2.text = alias
+                            textViewAlias.text = alias
                         }
                         if (perso.alias.size == 3) {
                             alias += ("AKA: " + perso.alias[0] + " / " + perso.alias[1]).toUpperCase()
                             alias += (" / " + perso.alias[2]).toUpperCase()
-                            textViewAlias2.text = alias
+                            textViewAlias.text = alias
                         }
                         if (perso.alias.size == 4) {
                             alias += ("AKA :\n" + perso.alias[0] + " / " + perso.alias[1] + " / ").toUpperCase()
                             alias += (perso.alias[2] + " / \n" + perso.alias[3]).toUpperCase()
-                            textViewAlias2.text = alias
+                            textViewAlias.text = alias
                         }
                         if (perso.alias.size == 5) {
                             alias += ("AKA :\n" + perso.alias[0] + " / " + perso.alias[1] + " / ").toUpperCase()
                             alias += (perso.alias[2] + " / \n" + perso.alias[3] + " / " + perso.alias[4]).toUpperCase()
-                            textViewAlias2.text = alias
+                            textViewAlias.text = alias
                         }
                     }else{
-                        textViewAlias2.text = "${perso.name} has no alias".toUpperCase()
+                        textViewAlias.text = "${perso.name} has no alias".toUpperCase()
                     }
                 }
             }
