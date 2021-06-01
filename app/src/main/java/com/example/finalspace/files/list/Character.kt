@@ -7,6 +7,8 @@ data class Character(
         val species: String,
         val gender: String,
         val hair: String,
+        val abilities: Array<String>,
         val origin: String,
+        val alias: Array<String>,
         val img_url: String
 )
