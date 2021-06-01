@@ -9,8 +9,13 @@ Les données sont récupérées de l'API Rest Final Space : https://finalspaceap
 plus précisément dans l'endpoint "/api/v0/character"
 
 Tous les appels à l'API Rest sont fait par un Singletons.
+L'application est codée pour s'utiliser en mode portrait, bien que les contraintes screenOrentation aient été mises dans les fichiers XML, 
+l'application est tout de même sujette à se tourner en mode paysage quand on oriente le téléphone pour ça.
 
-Un bug important doit être recensé ici, il est lié d'une quelconque façon au premier démarrage de l'appli, 
+
+
+
+/*Un bug important doit être recensé ici, il est lié d'une quelconque façon au premier démarrage de l'appli, 
 et plus précisément au premier appel de la fonction qui télécharge les photos grâce aux URL et un inputStream :
 
         Au premier démarrage, la liste s'affiche correctement, et quand on clique sur un personnage, la fonction qui télécharge la photo associée à l'url fait crasher l'appli.
@@ -19,6 +24,6 @@ et plus précisément au premier appel de la fonction qui télécharge les photo
         Je ne sais pas si c'est car j'ai débuggué sur mon propre téléphone et qu'il y a des mesures de sécurités de 1ère connexion,
         ou si ce résultat aura lieux sur tous les appareils.
         Mais en tout cas après le 1er crash, l'application fonctionne sans problèmes.
+*/              CE BUG A ÉTÉ RÉGLÉ - le 1er Juin, soit 2 jours après la date de rendu
         
-L'application est codée pour s'utiliser en mode portrait, bien que les contraintes screenOrentation aient été mises dans les fichiers XML, 
-l'application est tout de même sujette à se tourner en mode paysage quand on oriente le téléphone pour ça.
+
