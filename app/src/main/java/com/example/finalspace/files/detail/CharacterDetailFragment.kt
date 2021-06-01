@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.finalspace.R
 import com.example.finalspace.files.Singletons
 import com.example.finalspace.files.list.Character
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,7 +52,7 @@ class CharacterDetailFragment : Fragment() {
             findNavController().navigate(R.id.navigate_to_character_list_fragment)
         }
     }
-
+/*      Code de récupération et affichage des images (celui qui était buggé)
     lateinit var bmImage: ImageView
 
     public fun DownloadImageTask (bmImage: ImageView, url: String) : Bitmap {
@@ -72,7 +73,7 @@ class CharacterDetailFragment : Fragment() {
 
     private fun onPostExecute(result: Bitmap) {
         bmImage.setImageBitmap(result)
-    }
+    }*/
 
 
 
@@ -90,11 +91,7 @@ class CharacterDetailFragment : Fragment() {
                     textViewGend.text = ("GENDER: "+perso.gender+"\n").toUpperCase()
                     textViewOrig.text = ("ORIGIN: "+perso.origin).toUpperCase()
                     textViewStat.text = ("CURRENT STATUS: "+perso.status).toUpperCase()
-                    val characPicture : Bitmap = DownloadImageTask(imgView,perso.img_url)
-                    if (characPicture!=null) {
-                        characPicture.prepareToDraw()
-                        onPostExecute(characPicture)
-                    }
+                    Picasso.get().load(perso.img_url).into(imgView);
 
                 }
             }
