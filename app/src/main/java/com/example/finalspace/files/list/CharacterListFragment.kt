@@ -48,11 +48,13 @@ class CharacterListFragment : Fragment() {
         characListCall.enqueue(object : Callback<List<Character>> {
             override fun onResponse(call: Call<List<Character>>, response: Response<List<Character>>) {
                 if(response.body()==null){
+                    /*
                     var characTab: List<Character> = arrayListOf<Character>().apply {
                         add(Character(998,"Error, get response null", "human","","","","",""))
                         response.errorBody().toString()
                     }
                     adapter.updateList(characTab)
+                    */
                 }else{
                     var characTab = mutableListOf<Character>()
                     for (c in response.body()!!) {
@@ -63,10 +65,12 @@ class CharacterListFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<List<Character>>, t: Throwable) {
+               /*
                 var characTab: List<Character> = arrayListOf<Character>().apply {
                     add(Character(999,"Request failed", "","","","","",""))
                 }
                 adapter.updateList(characTab)
+                */
             }
         })
 
