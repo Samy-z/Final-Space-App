@@ -110,8 +110,8 @@ class CharacterDetailFragment : Fragment() {
                             textViewAbilities.text = abilities
                         }
                         if (perso.abilities.size == 4) {
-                            abilities += ("${perso.name}'S ABILITIES:\n" + perso.abilities[0] + " / " + perso.abilities[1]).toUpperCase()
-                            abilities += ("\n" + perso.abilities[2] + " / " + perso.abilities[3]).toUpperCase()
+                            abilities += ("${perso.name}'S ABILITIES:\n" + perso.abilities[0] + " / " + perso.abilities[1] + " /\n").toUpperCase()
+                            abilities += (perso.abilities[2] + " / " + perso.abilities[3]).toUpperCase()
                             textViewAbilities.text = abilities
                         }
                     }else{
